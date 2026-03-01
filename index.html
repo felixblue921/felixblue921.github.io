@@ -65,22 +65,16 @@ header{
     margin-bottom:15px;
     color:#38bdf8;
 }
-.image-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
-}
-.image-grid img{
-    width:100%;
-    border-radius:12px;
-}
-/* Converted Equipment每行显示两张图片，响应式 */
+/* Converted Equipment 每行最多2张，自适应 */
 #converted-equipment{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(45%,1fr));
     gap:20px;
 }
-
+#converted-equipment img{
+    width:100%;
+    border-radius:12px;
+}
 .contact{
     text-align:center;
 }
@@ -134,7 +128,7 @@ footer{
     border-radius:5px;
     cursor:pointer;
 }
-/* About VertiPower字体加大 */
+/* About VertiPower 字体加大 */
 .about p{
     font-size:20px;
     line-height:1.8;
@@ -198,10 +192,7 @@ footer{
 <section class="section">
 <h2>Converted Equipment</h2>
 <div class="image-grid" id="converted-equipment">
-<!-- 上传多少张就显示多少张 -->
-<img src="product1.jpg">
-<img src="product2.jpg">
-<img src="product3.jpg">
+<!-- JS 自动加载图片 -->
 </div>
 </section>
 
@@ -230,6 +221,7 @@ We use cookies to ensure you get the best experience on our website.
 </div>
 
 <script>
+// Cookie accept
 function acceptCookies(){
     document.getElementById('cookie-notice').style.display='none';
     localStorage.setItem('cookieAccepted','true');
@@ -237,6 +229,19 @@ function acceptCookies(){
 if(localStorage.getItem('cookieAccepted')){
     document.getElementById('cookie-notice').style.display='none';
 }
+
+// 自动加载 Converted Equipment 图片
+fetch('images/converted/list.json')
+.then(response => response.json())
+.then(data => {
+    const container = document.getElementById('converted-equipment');
+    data.forEach(filename => {
+        const img = document.createElement('img');
+        img.src = `images/converted/${filename}`;
+        container.appendChild(img);
+    });
+})
+.catch(err => console.error('Failed to load converted equipment images:', err));
 </script>
 
 </body>
