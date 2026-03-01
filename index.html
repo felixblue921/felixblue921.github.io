@@ -74,6 +74,13 @@ header{
     width:100%;
     border-radius:12px;
 }
+/* Converted Equipment每行显示两张图片，响应式 */
+#converted-equipment{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(45%,1fr));
+    gap:20px;
+}
+
 .contact{
     text-align:center;
 }
@@ -127,6 +134,14 @@ footer{
     border-radius:5px;
     cursor:pointer;
 }
+/* About VertiPower字体加大 */
+.about p{
+    font-size:20px;
+    line-height:1.8;
+}
+.about h2{
+    font-size:40px;
+}
 </style>
 </head>
 <body>
@@ -140,7 +155,6 @@ footer{
 <p>Proven electric retrofit solutions for diesel MEWPs. ULEZ compliant. 30%+ residual uplift. 12-month ROI. Delivered with UK-based engineering support.</p>
 </section>
 
-<!-- 新增板块：Why We Convert Diesel MEWPs to Electric -->
 <section class="section">
 <h2>Why We Convert Diesel MEWPs to Electric?</h2>
 <div class="bullets">
@@ -163,8 +177,7 @@ footer{
 </div>
 </section>
 
-<!-- 新增板块：About VertiPower -->
-<section class="section">
+<section class="section about">
 <h2>About VertiPower</h2>
 <p>Our core team members each bring around ten years of hands-on experience in the MEWP industry. We put meticulous care into injecting new power into every machine we work on. Our system maturity is far ahead of the competition — not only do we use premium-brand components, but we also develop advanced smart software. This allows not just remote diagnostics, but also the ability to resolve issues via OTA updates after a fault is detected, enabling truly contactless and efficient after-sales support.</p>
 <p>Since 2016, we have been specialising in diesel-to-electric conversions. We have modified nearly all mainstream models currently on the market. Starting in 2025, we began expanding into international markets, aiming to deliver real value to overseas users with our advanced systems.</p>
@@ -185,7 +198,7 @@ footer{
 <section class="section">
 <h2>Converted Equipment</h2>
 <div class="image-grid" id="converted-equipment">
-<!-- 直接上传图片即可显示 -->
+<!-- 上传多少张就显示多少张 -->
 <img src="product1.jpg">
 <img src="product2.jpg">
 <img src="product3.jpg">
